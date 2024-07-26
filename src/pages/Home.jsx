@@ -18,9 +18,12 @@ const Home = () => {
               with our <span className='text-orange-500 font-cursive'>E<span className='text-black font-cursive'>d</span>Tech!</span>
             </h1>
             <p className='font-sans mt-2 w-full md:w-[80%] ml-1 mb-3'>
-              Welcome to Coffe Products, where every cup tells a story. 
-              Our coffee is meticulously sourced from the finest beans around the world. Join us on a journey of coffee excellence, and experience the art of brewing perfection. Discover your favorite blend today and elevate your coffee moments to new heights.
-            </p>
+            Welcome to EduSpark, where learning meets innovation.
+            At EduSpark, we believe in transforming education through cutting-edge technology and engaging content. 
+            Our platform offers a diverse range of courses designed to spark curiosity and drive success. 
+            Whether you're looking to enhance your skills or embark on a new learning journey, EduSpark provides top-notch resources 
+            and a seamless learning experience. Explore our comprehensive course offerings today and take your 
+            education to the next level with EduSpark.</p>
             <Link to='/course' className='bg-orange-600 p-2 px-5 py-2  rounded-full p-1 bg-opacity-50 hover:bg-opacity-100 font-semibold '>
               See More Course
             </Link>
