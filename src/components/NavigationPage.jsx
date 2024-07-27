@@ -69,7 +69,7 @@ const NavBar = () => {
         <div className="sm:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1">
             <Link to="/" onClick={toggleMenu} className="text-black px-6 py-2 text-orange-600  rounded-full text-sm font-medium border border-orange-600 bg-orange-600 bg-opacity-10 hover:bg-opacity-100 hover:text-black">Home</Link>
-            <Link to="/about" onClick={toggleMenu} className="text-black px-6 py-2 text-orange-600  rounded-full text-sm font-medium border border-orange-600 bg-orange-600 bg-opacity-10 hover:bg-opacity-100 hover:text-black">About</Link>
+            <Link to="/learning" onClick={toggleMenu} className="text-black px-6 py-2 text-orange-600  rounded-full text-sm font-medium border border-orange-600 bg-orange-600 bg-opacity-10 hover:bg-opacity-100 hover:text-black">Learning</Link>
             <Link to="/course" onClick={toggleMenu} className="text-black px-6 py-2 text-orange-600  rounded-full text-sm font-medium border border-orange-600 bg-orange-600 bg-opacity-10 hover:bg-opacity-100 hover:text-black">Course</Link>
           </div>
         </div>
