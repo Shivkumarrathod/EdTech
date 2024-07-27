@@ -10,14 +10,15 @@ const NavBar = () => {
   const firebase = useFirebase()
 
   const [isOpen, setIsOpen] = useState(false);
-  
+  const navigate = useNavigate()
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
   const handleSignOut =async()=>{
     await signOut(firebaseAuth)
+    navigate('/login')
   }
-  const navigate = useNavigate()
 
   // useEffect(()=>{
   //   if (!firebase.isLoggedIn) {

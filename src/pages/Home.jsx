@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FiInstagram } from 'react-icons/fi';
 import { FaGithub } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useFirebase } from '../firebaseContext/Firebase';
 
 const Home = () => {
+  const firebase = useFirebase()
+  const navigate = useNavigate()
+   useEffect(()=>{
+    if (!firebase.isLoggedIn) {
+      navigate('/login')
+    }
+  },[firebase])
   return (
     <>
       <div className='w-full mb-20 flex flex-col md:flex-row mt-8'>

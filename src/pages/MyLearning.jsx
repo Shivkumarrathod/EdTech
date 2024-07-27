@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useFirebase } from '../firebaseContext/Firebase'
 import SingleCourse from '../components/SigngleCourse'
+import { useNavigate } from 'react-router-dom'
 
 const MyLearning = () => {
     const firebase = useFirebase()
@@ -14,6 +15,12 @@ const MyLearning = () => {
         }
         getData()
       },[firebase,course])
+   const navigate = useNavigate()
+   useEffect(()=>{
+    if (!firebase.isLoggedIn) {
+      navigate('/login')
+    }
+  },[firebase])
   return (
     <>
     <h1 className='ml-20 text-2xl text-orange-600 font-bold underline hover:text-blue-600'>Enrolled courses</h1>
