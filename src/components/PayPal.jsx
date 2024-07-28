@@ -13,7 +13,7 @@ const PayPal = ({ amount, onSuccess }) => {
                 {
                   amount: {
                     currency:"CDA",
-                    value: '10',
+                    value: amount,
                   },
                 },
               ],
