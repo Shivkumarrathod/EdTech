@@ -4,6 +4,8 @@ import PayPal from '../components/PayPal'
 import { useFirebase } from '../firebaseContext/Firebase'
 import { useNavigate, useParams } from 'react-router-dom'
 import SigngleCourse from '../components/SigngleCourse'
+import { createOrder,captureOrder } from '../Api/paypal'
+
 const BuyPage = () => {
   const {id} = useParams()
   const [checkout,setCheckout] = useState(false)
@@ -28,6 +30,19 @@ const BuyPage = () => {
     setCheckout(false)
     navigate('/learning')
   };
+  
+  const [orderId, setOrderId] = useState(null);
+  const [captureData, setCaptureData] = useState(null);
+
+  const handleCreateOrder = async () => {
+    const order = await createOrder();
+    setOrderId(order.id);
+  };
+
+  const handleCaptureOrder = async () => {
+    const capture = await captureOrder(orderId);
+    setCaptureData(capture);
+  };
 
   return (
     <div className='flex flex-wrap ml-16 mt-10 ' >
@@ -40,9 +55,14 @@ const BuyPage = () => {
           <p className='ml-10'>${course.price}</p>
         </div>
         {checkout?(
-          <PayPal amount={course.price} onSuccess={handleSuccess} />      ):(
+          <PayPal amount={course.price} course={course} />      ):(
           <button onClick={()=>setCheckout(true)} className='bg-orange-400 w-[20rem] mt-2 rounded-md p-1 hover:bg-blue-600'>Checkout</button>
         )}
+         {/* <div>
+          <button onClick={handleCreateOrder}>Create Order</button>
+          {orderId && <button onClick={handleCaptureOrder}>Capture Order</button>}
+          {captureData && <pre>{JSON.stringify(captureData, null, 2)}</pre>}
+        </div> */}
       </div>
     </div>
   )

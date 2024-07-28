@@ -65,9 +65,11 @@ export const FirebaseProvider =(props)=>{
     }
     const setDocFirestore = async(uid,data)=>{
       const docsRef =await addDoc(collection(db,uid),data)
+      // return docsRef
       console.log(docsRef);
       console.log(docsRef.id);
     }
+
     return <FirebaseContext.Provider value={{
       signUp,
       signIn,
