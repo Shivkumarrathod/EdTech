@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useFirebase } from '../firebaseContext/Firebase';
 import { useNavigate } from 'react-router-dom';
 
+<<<<<<< HEAD
 const PayPal = ({ amount, course }) => {
 
   const firebase = useFirebase()
@@ -16,6 +17,36 @@ const PayPal = ({ amount, course }) => {
       const response = await axios.get('http://localhost:5000/api/config/paypal');
       const {data} = response
       setPayPal(data)
+=======
+const PayPal = ({ amount, onSuccess }) => {
+  const paypalRef = useRef();
+  console.log(amount);
+  useEffect(() => {
+    if (!paypalRef.current.hasChildNodes()) {
+      window.paypal
+        .Buttons({
+          createOrder: (data, actions) => {
+            return actions.order.create({
+              purchase_units: [
+                {
+                  amount: {
+                    currency:"CDA",
+                    value: amount,
+                  },
+                },
+              ],
+            });
+          },
+          onApprove: async (data, actions) => {
+            const order = await actions.order.capture();
+            onSuccess(order);
+          },
+          onError: (err) => {
+            console.error(err);
+          },
+        })
+        .render(paypalRef.current);
+>>>>>>> 44239b06a0fe42acae4c10b69931c25296d6c5cd
     }
     getClientId()
   },[axios])
